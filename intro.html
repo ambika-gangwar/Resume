@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<!-- Professional Resume Web Template -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2d3436;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 30px auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            margin-top: -100px;
+            margin-right: -100px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header .title {
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            opacity: 0.95;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header .contact-info {
+            font-size: 0.95em;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        header .contact-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        header .contact-info span:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            padding: 45px 40px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h2 {
+            font-size: 1.6em;
+            color: #667eea;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        /* Summary Section */
+        #summary p {
+            font-size: 1.05em;
+            color: #555;
+            line-height: 1.8;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        /* Experience & Education */
+        .job, .education {
+            margin-bottom: 28px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .job:hover, .education:hover {
+            background: #f0f3ff;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+        }
+
+        .job:last-child, .education:last-child {
+            margin-bottom: 0;
+        }
+
+        .job-title, .degree {
+            font-weight: 700;
+            font-size: 1.15em;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .company, .school {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .date {
+            color: #a0aec0;
+            font-size: 0.9em;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .description {
+            margin-top: 12px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .description li {
+            margin-left: 20px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .description li::marker {
+            color: #667eea;
+        }
+
+        /* School Logo Styling */
+        .education-with-logo {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .school-logo {
+            flex-shrink: 0;
+            width: auto;
+            height: auto;
+            min-width: 80px;
+            min-height: 80px;
+            max-width: 120px;
+            max-height: 120px;
+            border-radius: 8px;
+            background-color: #f0f3ff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid #e9ecef;
+            padding: 4px;
+        }
+
+        .school-logo img {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        .education-content {
+            flex: 1;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea25 0%, #764ba225 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .skill-category p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        .project {
+            background: linear-gradient(135deg, #fff9f0 0%, #fff5e6 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ffe6cc;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px 0 0 10px;
+        }
+
+        .project:hover {
+            transform: translateX(8px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+            background: linear-gradient(135deg, #fff0e6 0%, #ffebcc 100%);
+        }
+
+        .project h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 1.15em;
+        }
+
+        .project p {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #764ba2;
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.95em;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            main {
+                padding: 25px;
+            }
+
+            header .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            header .contact-info span {
+                justify-content: center;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>Ambika Gangwar</h1>
+            <div class="title">Student</div>
+            <div class="contact-info">
+                <span>📧 ambika.gangwar25@iimb.ac.in</span>
+                
+                <span>📍 Lucknow, India</span>
+                <a href="https://www.linkedin.com/in/ambika-gangwar-677b89384" target="_blank" style="color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.15); padding: 8px 15px; border-radius: 25px; backdrop-filter: blur(10px); transition: all 0.3s ease;">💼 www.linkedin.com/in/ambika-gangwar-677b89384</a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Professional Summary -->
+            <section id="summary">
+                <h2>Professional Summary</h2>
+                <p>
+                     I am a Computer Science undergraduate currently pursuing B.Tech along with a BBA in Digital Business and Entrepreneurship from IIM Bangalore. I have a consistent academic background, with 96.4% in ICSE and 91.75% in ISC.
+I also take an active role as a Learning Pod Leader, working with a group of 50 students to support collaborative learning. I am interested in technology, problem-solving, and continuing to build both technical and interpersonal skills over time.
+                </p>
+            </section>
+
+            <!-- Experience -->
+            <section id="experience">
+                <h2>Leadership & Experience</h2>
+
+                <div class="job">
+                    <div class="job-title">Solo Learning Pod Leader</div>
+                    <div class="company">IIMB BBA DBE Program</div>
+                    <div class="date">Current</div>
+                    <div class="description">
+                        <ul>
+                            <li>Lead and mentor 50 students in the BBA DBE program</li>
+                            <li>Organize study sessions, group projects, and collaborative learning initiatives</li>
+                            <li>Provide academic guidance and support to ensure peer success</li>
+                            <li>Facilitate communication between students and faculty</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section id="education">
+                <h2>Education</h2>
+
+                <div class="education">
+                    <div class="education-with-logo">
+                        <div class="school-logo">
+                            <img src="loreto.png" alt="Loreto Convent Logo" onerror="this.src='https://via.placeholder.com/80?text=LC'">
+                        </div>
+                        <div class="education-content">
+                            <div class="degree">Middle School  </div>
+                            <div class="school">Loreto Convent, Lucknow</div>
+                            <div class="date">2021</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education">
+                    <div class="education-with-logo">
+                        <div class="school-logo">
+                            <img src="cms.png" alt="City Montessori School Logo" onerror="this.src='https://via.placeholder.com/80?text=CMS'">
+                        </div>
+                        <div class="education-content">
+                            <div class="degree">High School (Grades 9-12, ICSE & ISC)</div>
+                            <div class="school">City Montessori School (CMS), Lucknow</div>
+                            <div class="date">ICSE: 96.4% (2023) | ISC: 91.75%(2025)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education">
+                    <div class="education-with-logo">
+                        <div class="school-logo">
+                            <img src="psit.png" alt="PSIT Kanpur Logo" onerror="this.src='https://via.placeholder.com/80?text=PSIT'">
+                        </div>
+                        <div class="education-content">
+                            <div class="degree">Bachelor of Technology in CSE</div>
+                            <div class="school">PSIT Kanpur</div>
+                            <div class="date">2025-2029</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education">
+                    <div class="education-with-logo">
+                        <div class="school-logo">
+                            <img src="iimb.png" alt="IIMB Logo" onerror="this.src='https://via.placeholder.com/80?text=IIMB'">
+                        </div>
+                        <div class="education-content">
+                            <div class="degree">Bachelor of Business Administration (DBE)</div>
+                            <div class="school">Indian Institute of Management Bangalore (IIMB)</div>
+                            <div class="date">2025-2028</div>
+                        </div>
+                    </div>
+                </div>
+ 
+            </section>
+
+            <!-- Skills -->
+            <section id="skills">
+                <h2>Skills & Competencies</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Technical</h3>
+                        <p>Programming (Java,C,C++) Algorithms, Web Development </p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Leadership</h3>
+                        <p>Team Mentoring, Student Guidance, Program Coordination, Peer Support</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Academic</h3>
+                        <p>Problem Solving, Analytical Thinking , Project Management</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Communication</h3>
+                        <p>Public Speaking,Model UN, Group Facilitation, Documentation, Stakeholder Engagement</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Interpersonal</h3>
+                        <p> Active Listening, Conflict Resolution, Team Collaboration</p>
+                </div>
+            </section>
+
+            <!-- Achievements -->
+            <section id="projects">
+                <h2>Achievements & Highlights</h2>
+
+                <div class="project">
+                    <h3>Outstanding Academic Performance</h3>
+                    <p>Consistently excelled throughout academic journey with 96.4% in ICSE 10th and 91.75% in ISC 12th, demonstrating strong commitment to academic excellence and mastery of core subjects.</p>
+                </div>
+
+            </section>
+
+            <!-- Interests -->
+            <section id="interests">
+                <h2>Interests</h2>
+                <div class="job" style="background: #f5f7fa; border-left-color: #4caf50;">
+                    <div class="description">
+                        <ul>
+                            <li>Badminton: regular player honing teamwork, discipline, and strategic thinking.</li>
+                            <li>Reading: enjoys self help as well as fictional books for learning and creativity.</li>
+                            <li>Walking: daily walks to clear the mind and maintain physical fitness.</li>
+                            <li>Music: listens to music for focus and productivity.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+                <div class="project">
+                    <h3>Dual Degree Pursuit</h3>
+                    <p>Simultaneously pursuing BTech from Kanpur and BBA DBE from IIMB, showcasing ability to manage rigorous academic programs while maintaining high standards.</p>
+                </div>
+
+                <div class="project">
+                    <h3>Student Leadership as Learning Pod Leader</h3>
+                    <p>Successfully leading and mentoring 50 students as Solo Learning Pod Leader, driving collaborative learning culture and supporting peer academic growth in the BBA DBE program.</p>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section id="certifications">
+                <h2>Recognitions & Awards</h2>
+                <div class="description">
+                    <ul>
+                        <li>ICSE Distinction: Achieved 96.4% - Top Performer (2023)</li>
+                        <li>ISC Excellence: Achieved 91.75% - Consistent High Achiever(2025)</li>
+                         
+                        <li>IIMB BBA DBE Program(2025)</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Ambika Gangwar. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
